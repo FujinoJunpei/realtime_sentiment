@@ -2,9 +2,6 @@ credentials.json
 config.yml
 token.pickle
 
-*.jsonl
-output/
-
 *.ipynb
 __pycache__/
 .ipynb_checkpoints/
