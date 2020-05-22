@@ -27,9 +27,11 @@ def get_new_comments(
     else:
         target_ids = target_records.id.astype(int)
         mark_taken_records(service, target_ids, sheet_id, sheet_name)
-        target_jsonl = target_records[['id', 'text']].to_json(
-            orient='records', force_ascii=False, lines=True)
-        return target_jsonl
+        # target_jsonl = target_records[['id', 'text']].to_json(
+        #     orient='records', force_ascii=False, lines=True)
+        # return target_jsonl
+        target_df = target_records[['id', 'text']]
+        return target_df
 
 
 def mark_taken_records(
