@@ -5,16 +5,17 @@ from realtime_sentiment.lib.spread_sheet import (
     get_sheet_as_df, update_values_by_range)
 
 
-def main():
+def get_df():
     service = google_spreadsheet_auth()
     target_jsonl = get_new_comments(service)
-    with open(f"{save_dir('output')}/new_comments.jsonl", mode='w') as j:
-        j.write(target_jsonl)
+    # with open(f"{save_dir('output')}/new_comments.jsonl", mode='w') as j:
+    #     j.write(target_jsonl)
+    return target_jsonl
 
 
 def get_new_comments(
         service,
-        config_path='realtime_sentiment/config.yml',
+        config_path='./config.yml', #main.pyをrealtime_sentimentから実行する前提
         sheet_name='シート1'):
     with open(config_path, 'r', encoding='UTF-8') as yml:
         config = yaml.safe_load(yml)
