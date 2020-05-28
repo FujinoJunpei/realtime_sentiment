@@ -24,7 +24,7 @@ def get_new_comments(
     target_records = target_sheet[
         target_sheet.is_taken.astype(str, errors='ignore') != '1']
     if len(target_records) == 0:
-        return ''
+        return None
     else:
         target_ids = target_records.id.astype(int)
         mark_taken_records(service, target_ids, sheet_id, sheet_name)

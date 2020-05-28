@@ -7,11 +7,10 @@ from realtime_sentiment.src.output import output
 
 
 df = get_df()
-if isinstance(df, str):
-    print("No new message!")
+if df is None:
+    print("No new messages!")
 else:
     df = preprocess_text(df)
-    # print(df)
     make_jsonl(df)
-
-output()
+    # predict()
+    output()
