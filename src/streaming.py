@@ -1,3 +1,4 @@
+import os
 import yaml
 from realtime_sentiment.lib.converters import save_dir
 from realtime_sentiment.lib.auth import google_spreadsheet_auth
@@ -15,7 +16,7 @@ def get_df():
 
 def get_new_comments(
         service,
-        config_path='./config.yml', #main.pyをrealtime_sentimentから実行する前提
+        config_path=os.path.join(os.path.dirname(__file__),'../config.yml'), 
         sheet_name='シート1'):
     with open(config_path, 'r', encoding='UTF-8') as yml:
         config = yaml.safe_load(yml)
