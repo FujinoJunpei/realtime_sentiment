@@ -13,6 +13,19 @@ google-auth-oauthlib = "*"
 pandas = "*"
 neologdn = "*"
 emoji = "*"
+sentencepiece = "*"
+black = "*"
+flake8 = "*"
+mypy = "==0.761"
+pytest = "*"
+pytest-cov = "*"
+numpydoc = ">=0.8.0"
+Janome = "*"
+allennlp-server = {git = "https://github.com/allenai/allennlp-server.git"}
+pyknp = "*"
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
