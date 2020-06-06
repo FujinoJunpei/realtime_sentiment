@@ -46,7 +46,7 @@ class MeCabWordSplitter(WordSplitter):
         text=re.sub('\n', "", text) # 改行文字
         text=re.sub(' ', "", text) # 必須
 
-        return text.decode('unicode-escape')
+        return text.encode().decode('unicode-escape')
 
     @overrides
     def split_words(self, sentence: str) -> List[Token]:

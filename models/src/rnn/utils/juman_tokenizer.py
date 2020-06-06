@@ -25,7 +25,7 @@ class JumanTokenizer(Tokenizer):
         text=re.sub('\n', "", text) # 改行文字
         text=re.sub(' ', "", text) # 必須
 
-        return text.decode('unicode-escape')
+        return text.encode().decode('unicode-escape')
 
     def _split(self, text):
         text = self._format_text(text)
