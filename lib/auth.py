@@ -5,8 +5,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 
 
 def google_spreadsheet_auth(
-        credentials_path='realtime_sentiment/credentials.json',
-        token_path='realtime_sentiment/token.pickle'):
+        credentials_path='./credentials.json', #realtime_sentmentから実行する前提
+        token_path='./token.pickle'):
     SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
     if os.path.exists(token_path):
         with open(token_path, 'rb') as token:
@@ -23,3 +23,6 @@ def google_spreadsheet_auth(
             pickle.dump(creds, token)
     service = build('sheets', 'v4', credentials=creds).spreadsheets()
     return service
+
+if __name__ == "__main__":
+    google_spreadsheet_auth()
