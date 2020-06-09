@@ -2,7 +2,7 @@
 from pathlib import Path
 from typing import *
 import torch
-from pytorch_pretrained_bert.modeling import BertModel
+# from pytorch_pretrained_bert.modeling import BertModel
 
 from functools import partial
 from overrides import overrides
@@ -16,9 +16,9 @@ from allennlp.data.tokenizers import Token
 from allennlp.data.vocabulary import Vocabulary
 from allennlp.data.dataset_readers import DatasetReader
 from allennlp.data.fields import TextField, LabelField
-from allennlp.data.tokenizers.word_splitter import SpacyWordSplitter
+# from allennlp.data.tokenizers.word_splitter import SpacyWordSplitter
 from allennlp.data.token_indexers import SingleIdTokenIndexer
-from allennlp.data.iterators import BucketIterator
+# from allennlp.data.iterators import BucketIterator
 
 from allennlp.nn import util as nn_util
 
@@ -34,7 +34,7 @@ from allennlp.training.trainer import Trainer
 from allennlp.training.metrics.categorical_accuracy import CategoricalAccuracy
 
 from allennlp.nn import RegularizerApplicator
-from allennlp.modules.token_embedders.bert_token_embedder import PretrainedBertModel
+# from allennlp.modules.token_embedders.bert_token_embedder import PretrainedBertModel
 
 from allennlp.predictors.sentence_tagger import SentenceTaggerPredictor
 

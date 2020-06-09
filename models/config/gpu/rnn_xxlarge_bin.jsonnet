@@ -10,10 +10,13 @@ local HDN = 128;
         "lowercase_tokens": true
       }
     },
+    "tokenizer": {
+      "type": "juman_tokenizer",
+      "word_splitter":{
+        "type": "juman"
+      }
+    },
     "max_sequence_length": 128
-  },
-  "vocabulary":{
-    "directory_path": "models/data/vocab/"
   },
   "train_data_path": "models/data/binary_label/train.jsonl",
   "validation_data_path": "models/data/binary_label/valid.jsonl",
@@ -44,7 +47,7 @@ local HDN = 128;
 
   "trainer": {
     "num_epochs": 100,
-    "patience": 30, 
+    "patience": 10, 
     "cuda_device": 0,
     "model_save_interval": 2000,
     "num_serialized_models_to_keep": 2,
