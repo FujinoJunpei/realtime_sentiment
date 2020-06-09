@@ -1,0 +1,69 @@
+local EMBD = 256;
+local HDN = 128;
+
+{
+  "dataset_reader": {
+    "type": "twireader",
+    "token_indexers": {
+      "tokens": {
+        "type": "single_id",
+        "lowercase_tokens": true
+      }
+    },
+    "tokenizer": {
+      "type": "juman_tokenizer",
+      "word_splitter":{
+        "type": "juman"
+      }
+    },
+    "max_sequence_length": 128
+  },
+  "train_data_path": "models/data/binary_label/train.jsonl",
+  "validation_data_path": "models/data/binary_label/valid.jsonl",
+  "model": {
+    "type": "rnn_clf",
+    "text_field_embedder": {
+      "token_embedders": {
+        "tokens": {
+          "type": "embedding",
+          "embedding_dim": EMBD
+        }
+      }
+    },
+    "seq2vec_encoder": {
+      "type": "lstm",
+      "bidirectional": true,
+      "input_size": EMBD,
+      "hidden_size": HDN
+    },
+    "dropout": 0.5
+  },
+  "iterator": {
+    "type": "bucket",
+    "batch_size": 2,
+    "sorting_keys": [["tokens", "num_tokens"]],
+    "padding_noise": 1e-5
+  },
+
+  "trainer": {
+    "num_epochs": 100,
+    "patience": 10, 
+    "cuda_device": 0,
+    "model_save_interval": 2000,
+    "num_serialized_models_to_keep": 2,
+    "summary_interval": 100,
+    "histogram_interval": 100,
+    "should_log_learning_rate": true,
+    "grad_clipping": 1.0,
+    "validation_metric": "-loss",
+    "optimizer": {
+      "type": "adam",
+      "lr": 1e-4,
+      "weight_decay": 0.001
+    },
+    "learning_rate_scheduler": {
+        "type": "cosine",
+        "t_initial": 25
+    }
+  }
+}
